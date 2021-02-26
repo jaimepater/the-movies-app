@@ -6,11 +6,12 @@ import { Colors, StaticSpacing } from '../../../../theme/theme';
 import { Movie } from '../../../../definitions/types';
 import ReleaseDate from '../../../ReleaseDate/ReleaseDate';
 
-type MovieItemProps = {
+export type MovieItemProps = {
   selected?: boolean;
   movie: Movie;
   onClick?: Function;
   onDelete?: Function;
+  showsImage?: boolean;
 };
 
 interface MovieItemContainerProp {
@@ -29,22 +30,33 @@ const Link = styled(muiLink)`
 `;
 
 const MovieItem: FunctionComponent<MovieItemProps> = ({
-  movie: { title, releaseDate, id },
+  movie: { title, release, id, image },
   onClick,
   onDelete,
   selected,
+  showsImage,
 }) => {
   return (
     <MovieItemContainer $isSelected={selected || false}>
       <Grid container direction="row" alignItems="center" justify="space-between" spacing={3}>
+        {showsImage && (
+          <Grid item>
+            <img src={image} alt="movie" />
+          </Grid>
+        )}
         <Grid item>
-          <Link color="textPrimary" underline="none" onClick={() => onClick && onClick(id)}>
+          <Link
+            color="textPrimary"
+            underline="none"
+            onClick={() => onClick && onClick(id)}
+            data-testid="select-option"
+          >
             <Typography variant="h6">{title}</Typography>
-            <ReleaseDate date={releaseDate} />
+            <ReleaseDate date={release} />
           </Link>
         </Grid>
         {onDelete && (
-          <Grid item onClick={() => onDelete(id)}>
+          <Grid item onClick={() => onDelete(id)} data-testid="delete-option">
             <DeleteIcon color="error" />
           </Grid>
         )}

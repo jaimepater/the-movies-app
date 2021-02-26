@@ -16,7 +16,7 @@ import { Page } from '../../components/Page/Page';
 interface addMovieShape {
   title: string;
   image: string;
-  releaseDate: number;
+  release: string;
   description: string;
 }
 
@@ -40,13 +40,13 @@ const AddMovie: FunctionComponent = () => {
   };
 
   const handlerDate = async (date: MaterialUiPickersDate) => {
-    setValue('releaseDate', date?.getTime());
+    setValue('release', date?.toLocaleDateString());
   };
 
   React.useEffect(() => {
-    register('releaseDate');
+    register('release');
     register('image'); // custom register Antd input
-    setValue('releaseDate', new Date().getTime());
+    setValue('release', new Date().toLocaleDateString());
   }, [register]);
   return (
     <Page>

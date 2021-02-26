@@ -35,6 +35,7 @@ module.exports = {
     'no-param-reassign': 'off',
     '@typescript-eslint/ban-types': 'off',
     'react/jsx-props-no-spreading': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/require-default-props': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',

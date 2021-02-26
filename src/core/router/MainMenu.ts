@@ -1,6 +1,11 @@
 import { TFunction } from 'i18next';
 
-export const mainMenu = (t: TFunction) => [
+interface Menu {
+  label: string;
+  path: string;
+}
+
+export const mainMenu = (t: TFunction): Menu[] => [
   {
     label: t('home'),
     path: '/',
@@ -13,6 +18,6 @@ export const mainMenu = (t: TFunction) => [
 
   {
     label: t('top5'),
-    path: '/top-5',
+    path: '/top-movies',
   },
 ];

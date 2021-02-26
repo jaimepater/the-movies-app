@@ -9,7 +9,8 @@ type MovieListProps = {
   movies: Movie[];
   onSelectMovie?: Function;
   onDeleteMovie?: Function;
-  movieSelected: string;
+  movieSelected?: string;
+  showsImage?: boolean;
 };
 
 const MoviesContainer = styled.div`
@@ -23,6 +24,7 @@ const MovieList: FunctionComponent<MovieListProps> = ({
   onDeleteMovie,
   onSelectMovie,
   movieSelected,
+  showsImage,
 }) => {
   return (
     <MoviesContainer>
@@ -31,8 +33,9 @@ const MovieList: FunctionComponent<MovieListProps> = ({
           {movies.map((movie: Movie) => (
             <MovieItem
               movie={movie}
-              selected={movieSelected === movie.id}
-              key={movie.title}
+              selected={!!movieSelected && movieSelected === movie.id}
+              key={`${movie.id}${movie.title}`}
+              showsImage={showsImage}
               onClick={onSelectMovie}
               onDelete={onDeleteMovie}
             />

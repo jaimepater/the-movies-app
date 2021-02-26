@@ -2,6 +2,7 @@ enum Colors {
   Black = '#000000',
   White = '#FFFFFF',
   Primary = '#90caf9',
+  loader = '#3f51b5',
   Secondary = '#524a45',
   Disabled = '#6f6b69',
   Gray100 = '#3f3732',

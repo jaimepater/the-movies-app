@@ -20,7 +20,7 @@ const ButtonContainer = styled.div`
 `;
 
 const MovieDetails: FunctionComponent<MovieDetailsProps> = ({
-  movie: { title, releaseDate, description, image },
+  movie: { title, release, description, image },
 }) => {
   const { t } = useTranslation();
   const history = useHistory();
@@ -39,7 +39,7 @@ const MovieDetails: FunctionComponent<MovieDetailsProps> = ({
       </ButtonContainer>
       <TMContainer
         headerText={title}
-        headerLeftAction={<ReleaseDate date={releaseDate} />}
+        headerLeftAction={<ReleaseDate date={release} />}
         image={image}
       >
         <Typography>{description}</Typography>
